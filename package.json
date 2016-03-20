@@ -1,0 +1,15 @@
+{
+  "name": "social-avatar-proxy",
+  "version": "0.1.0",
+  "description": "Returns proxied avatars from Twitter, Facebook, Tumblr and YouTube.",
+  "main": "server.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Fabian Schneider",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "request": "^2.69.0"
+  }
+}
