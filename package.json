@@ -2,12 +2,29 @@
   "name": "social-avatar-proxy",
   "version": "0.1.1",
   "description": "Returns proxied avatars from Twitter, Facebook, Tumblr and YouTube.",
+  "keywords": [
+    "avatar",
+    "facebook",
+    "profile picture",
+    "proxy",
+    "tumblr",
+    "twitter",
+    "youtube"
+  ],
+  "homepage": "https://github.com/fabsrc/social-avatar-proxy#readme",
+  "bugs": {
+    "url": "https://github.com/fabsrc/social-avatar-proxy/issues"
+  },
+  "license": "MIT",
+  "author": "Fabian Schneider <fabbbbbi@googlemail.com>",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabsrc/social-avatar-proxy"
+  },
   "scripts": {
     "test": "standard"
   },
-  "author": "Fabian Schneider",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
     "request": "^2.69.0"
