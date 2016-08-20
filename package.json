@@ -1,6 +1,6 @@
 {
   "name": "social-avatar-proxy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Returns proxied avatars from Twitter, Facebook, Tumblr and YouTube.",
   "main": "server.js",
   "scripts": {

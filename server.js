@@ -30,9 +30,8 @@ app.get('/:platform/:user', (req, res) => {
       util.getYouTubePicture(req.params.user, uri => {
         if (!uri) return res.send('No valid username.')
 
-        uri = uri.replace('https:', '')
         return request
-          .get('https:' + uri)
+          .get(uri)
           .pipe(res)
       })
       break
