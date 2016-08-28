@@ -27,7 +27,7 @@ To get a profile picture use the following url structure:
 http://localhost:3333/:platform/:user
 ```
 
-Available plattforms are: **Twitter**, **Facebook**, **Tumblr** and **YouTube**.
+Available platforms: **Twitter**, **Facebook**, **Tumblr** and **YouTube**.
 
 ### Examples
 
