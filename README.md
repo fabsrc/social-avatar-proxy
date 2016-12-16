@@ -1,5 +1,6 @@
 # Social Avatar Proxy
 
+[![Build Status](https://img.shields.io/travis/fabsrc/social-avatar-proxy.svg?style=flat-square)](https://travis-ci.org/fabsrc/social-avatar-proxy)
 [![Dependencies](https://img.shields.io/david/fabsrc/social-avatar-proxy.svg?style=flat-square)](https://david-dm.org/fabsrc/social-avatar-proxy)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 

@@ -45,7 +45,7 @@ app.get('/:platform/:user', (req, res) => {
 })
 
 app.get('*', (req, res) => res.type('txt').send(`
-    Usage: ${req.protocol}://${req.headers.host}/{channel}/{usename}
+    Usage: ${req.protocol}://${req.headers.host}/{channel}/{username}
     e.g. ${req.protocol}://${req.headers.host}/facebook/zuck
     `)
 )
