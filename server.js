@@ -2,14 +2,17 @@ const express = require('express')
 const request = require('request')
 const util = require('./util')
 
-let app = express()
+const app = express()
 
 app.get('/:platform/:user', (req, res) => {
   switch (req.params.platform) {
     case 'twitter':
       return request
         .get('https://twitter.com/' + req.params.user + '/profile_image?size=bigger')
-        .pipe(res)
+        .on('response', response => (response.statusCode !== 200 || response.headers['content-type'] !== 'image/jpeg')
+           ? res.status(404).type('txt').send('Username not found.')
+           : response.pipe(res)
+        )
 
     case 'tumblr':
       return request
@@ -18,7 +21,7 @@ app.get('/:platform/:user', (req, res) => {
 
     case 'facebook':
       util.getFacebookId(req.params.user, id => {
-        if (!id) return res.send('No valid id.')
+        if (!id) return res.status(404).type('txt').send('Username not found.')
 
         return request
           .get('https://graph.facebook.com/' + id + '/picture?width=128')
@@ -28,7 +31,7 @@ app.get('/:platform/:user', (req, res) => {
 
     case 'youtube':
       util.getYouTubePicture(req.params.user, uri => {
-        if (!uri) return res.send('No valid username.')
+        if (!uri) return res.status(404).type('txt').send('Username not found.')
 
         return request
           .get(uri)
@@ -37,10 +40,16 @@ app.get('/:platform/:user', (req, res) => {
       break
 
     default:
-      return res.send('No valid platform!')
+      return res.status(404).type('txt').send('No valid platform!')
   }
 })
 
-let server = app.listen(process.env.PORT || 3333, () => {
+app.get('*', (req, res) => res.type('txt').send(`
+    Usage: ${req.protocol}://${req.headers.host}/{channel}/{usename}
+    e.g. ${req.protocol}://${req.headers.host}/facebook/zuck
+    `)
+)
+
+const server = module.exports = app.listen(process.env.PORT || 3333, () =>
   console.log(`App listening on port ${server.address().port}!`)
-})
+)

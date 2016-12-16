@@ -1,6 +1,6 @@
 {
   "name": "social-avatar-proxy",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Returns proxied avatars from Twitter, Facebook, Tumblr and YouTube.",
   "keywords": [
     "avatar",
@@ -23,13 +23,17 @@
     "url": "https://github.com/fabsrc/social-avatar-proxy"
   },
   "scripts": {
-    "test": "standard"
+    "test": "standard && ava",
+    "dev": "nodemon"
   },
   "dependencies": {
     "express": "^4.13.4",
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "standard": "^8.0.0"
+    "ava": "^0.17.0",
+    "nodemon": "^1.11.0",
+    "standard": "^8.0.0",
+    "supertest": "^2.0.1"
   }
 }
