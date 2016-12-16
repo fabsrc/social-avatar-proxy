@@ -9,9 +9,9 @@ app.get('/:platform/:user', (req, res) => {
     case 'twitter':
       return request
         .get('https://twitter.com/' + req.params.user + '/profile_image?size=bigger')
-        .on('response', response => (response.statusCode !== 200 || response.headers['content-type'] !== 'image/jpeg')
-           ? res.status(404).type('txt').send('Username not found.')
-           : response.pipe(res)
+        .on('response', response => (response.statusCode !== 200 || !['image/jpeg', 'image/png'].includes(response.headers['content-type']))
+            ? res.status(404).type('txt').send('Username not found.')
+            : response.pipe(res)
         )
 
     case 'tumblr':
