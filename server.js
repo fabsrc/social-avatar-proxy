@@ -2,7 +2,7 @@ const express = require('express')
 const request = require('request')
 const util = require('./util')
 
-const app = express()
+const app = module.exports = express()
 
 app.get('/:platform/:user', (req, res) => {
   switch (req.params.platform) {
@@ -39,6 +39,16 @@ app.get('/:platform/:user', (req, res) => {
       })
       break
 
+    case 'instagram':
+      util.getInstagramPicture(req.params.user, uri => {
+        if (!uri) return res.status(404).type('txt').send('Username not found.')
+
+        return request
+          .get(uri)
+          .pipe(res)
+      })
+      break
+
     default:
       return res.status(404).type('txt').send('No valid platform!')
   }
@@ -50,6 +60,6 @@ app.get('*', (req, res) => res.type('txt').send(`
     `)
 )
 
-const server = module.exports = app.listen(process.env.PORT || 3333, () =>
+const server = !module.parent && app.listen(process.env.PORT || 3333, () =>
   console.log(`App listening on port ${server.address().port}!`)
 )

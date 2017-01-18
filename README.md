@@ -4,7 +4,7 @@
 [![Dependencies](https://img.shields.io/david/fabsrc/social-avatar-proxy.svg?style=flat-square)](https://david-dm.org/fabsrc/social-avatar-proxy)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
-Returns proxied avatars from **Twitter**, **Facebook**, **Tumblr** and **YouTube**. Useful to display profile pictures in browsers with activated *Do Not Track* option. No API keys required!
+Returns proxied avatars from **Twitter**, **Facebook**, **Tumblr**, **YouTube** and **Instagram**. Useful to display profile pictures in browsers with activated *Do Not Track* option. No API keys required!
 
 ## Install
 
@@ -25,10 +25,10 @@ Server starts on port `3333` by default. Use the `PORT` environment variable to 
 To get a profile picture use the following url structure:
 
 ```
-http://localhost:3333/:platform/:user
+http://localhost:3333/{platform}/{user}
 ```
 
-Available platforms: **Twitter**, **Facebook**, **Tumblr** and **YouTube**.
+Available platforms: **Twitter**, **Facebook**, **Tumblr**, **YouTube** and **Instagram**.
 
 ### Examples
 

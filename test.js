@@ -49,3 +49,15 @@ test.cb('youtube: 404', t => {
     .get('/youtube/00000000000000000000000')
     .expect(404, t.end)
 })
+
+test.cb('instagram: 200', t => {
+  request(app)
+    .get('/instagram/taylorswift')
+    .expect(200, t.end)
+})
+
+test.cb('instagram: 404', t => {
+  request(app)
+    .get('/instagram/0000000000000000000000000000000000000000000')
+    .expect(404, t.end)
+})
