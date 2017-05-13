@@ -1,7 +1,7 @@
 const request = require('request')
 const USER_AGET = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:44.0) Gecko/20100101 Firefox/44.0'
 
-function getYouTubePicture (username, cb) {
+function getYouTubePictureUrl (username, cb) {
   const options = {
     url: 'https://www.youtube.com/' + username,
     headers: {
@@ -33,7 +33,7 @@ function getFacebookId (username, cb) {
   })
 }
 
-function getInstagramPicture (username, cb) {
+function getInstagramPictureUrl (username, cb) {
   const options = {
     url: 'https://instagram.com/' + username,
     headers: {
@@ -50,7 +50,7 @@ function getInstagramPicture (username, cb) {
 }
 
 module.exports = {
-  getYouTubePicture,
+  getYouTubePictureUrl,
   getFacebookId,
-  getInstagramPicture
+  getInstagramPictureUrl
 }

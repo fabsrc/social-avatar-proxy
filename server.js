@@ -1,10 +1,12 @@
-const express = require('express')
+const morgan = require('morgan')
 const request = require('request')
+const cache = require('apicache').middleware
+const app = module.exports = require('express')()
 const util = require('./util')
 
-const app = module.exports = express()
+app.use(morgan('tiny'))
 
-app.get('/:platform/:user', (req, res) => {
+app.get('/:platform/:user', cache(process.env.CACHE_DURATION || '6 hours'), (req, res) => {
   switch (req.params.platform) {
     case 'twitter':
       return request
@@ -30,7 +32,7 @@ app.get('/:platform/:user', (req, res) => {
       break
 
     case 'youtube':
-      util.getYouTubePicture(req.params.user, uri => {
+      util.getYouTubePictureUrl(req.params.user, uri => {
         if (!uri) return res.status(404).type('txt').send('Username not found.')
 
         return request
@@ -40,11 +42,11 @@ app.get('/:platform/:user', (req, res) => {
       break
 
     case 'instagram':
-      util.getInstagramPicture(req.params.user, uri => {
-        if (!uri) return res.status(404).type('txt').send('Username not found.')
+      util.getInstagramPictureUrl(req.params.user, url => {
+        if (!url) return res.status(404).type('txt').send('Username not found.')
 
         return request
-          .get(uri)
+          .get(url)
           .pipe(res)
       })
       break

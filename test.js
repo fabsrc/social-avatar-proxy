@@ -1,6 +1,7 @@
 const test = require('ava')
 const request = require('supertest')
 const app = require('./server')
+process.stdout.write = () => {}
 
 test.cb('twitter: 200', t => {
   request(app)
