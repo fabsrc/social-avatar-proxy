@@ -12,7 +12,7 @@ function getYouTubePictureUrl (username, cb) {
   request(options, (err, res, body) => {
     if (err) console.error(err)
 
-    const match = body && body.match(/<img class="channel-header-profile-image" src="([/\w.:\-_]*)/)
+    const match = body && body.match(/<meta property="og:image" content="([/\w.:\-_]*)">/)
     return match ? cb(match[1]) : cb(null)
   })
 }
